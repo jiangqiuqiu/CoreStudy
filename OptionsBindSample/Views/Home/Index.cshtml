@@ -1,0 +1,37 @@
+﻿@*使用构造函数注入的方式*@
+@*@model OptionsBindSample.Class
+
+    @{
+        ViewData["Title"] = "Index";
+    }
+
+    <h1>Index</h1>
+
+    <h4>ClassNo:@Model.ClassNo</h4>
+    <h4>ClassDesc:@Model.ClassDesc</h4>
+
+    <div>
+        @foreach (var student in Model.Students)
+        {
+            <span>Name:@student.Name</span>
+            <span>Age:@student.Age</span>
+        }
+    </div>*@
+
+@*直接注入到页面*@
+@using Microsoft.Extensions.Options
+@*@inject IOptions<OptionsBindSample.Student> ClassAccessor*@
+@inject IOptions<List<OptionsBindSample.Student>> ClassAccessor
+
+<h1>Index</h1>
+
+@*<h4>ClassNo:@ClassAccessor.Value.ClassNo</h4>
+    <h4>ClassDesc:@ClassAccessor.Value.ClassDesc</h4>*@
+
+<div>
+    @foreach (var student in ClassAccessor.Value)
+    {
+        <span>Name:@student.Name</span>
+        <span>Age:@student.Age</span>
+    }
+</div>
