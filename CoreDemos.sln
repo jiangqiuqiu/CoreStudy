@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDI", "CoreDI\CoreDI.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPipeLine", "MyPipeLine\MyPipeLine.csproj", "{B991FA6E-B367-46C9-948A-9842C98EF2BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloCore", "HelloCore\HelloCore.csproj", "{5A713FF9-64B6-4A26-A64A-A212CFAE4969}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B991FA6E-B367-46C9-948A-9842C98EF2BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B991FA6E-B367-46C9-948A-9842C98EF2BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B991FA6E-B367-46C9-948A-9842C98EF2BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A713FF9-64B6-4A26-A64A-A212CFAE4969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A713FF9-64B6-4A26-A64A-A212CFAE4969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A713FF9-64B6-4A26-A64A-A212CFAE4969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A713FF9-64B6-4A26-A64A-A212CFAE4969}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
