@@ -34,18 +34,29 @@ namespace OptionsBindSample
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,IApplicationLifetime applicationLifetime)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+            //IApplicationLifetime在应用程序开始和结束时候做的
+            //applicationLifetime.ApplicationStarted.Register(()=> {
+            //    Console.WriteLine("Started");
+            //});
+            //applicationLifetime.ApplicationStopped.Register(() => {
+            //    Console.WriteLine("Stopped");
+            //});
+            //applicationLifetime.ApplicationStopping.Register(() => {
+            //    Console.WriteLine("Stopping");
+            //});
+
 
             //Options示例代码需要用到MVC
             app.UseMvcWithDefaultRoute();
 
-
+           
             //Bind 的示例代码
             //app.Run(async (context) =>
             //{
