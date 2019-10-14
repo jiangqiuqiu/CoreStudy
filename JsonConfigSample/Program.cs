@@ -9,7 +9,7 @@ namespace JsonConfigSample
         static void Main(string[] args)
         {
             var builder = new ConfigurationBuilder()
-                .AddJsonFile("class.json");
+                .AddJsonFile("class.json",false,true);//第三个参数是热更新，如果json文件有改动就加载最新的
 
             var configuration = builder.Build();
 

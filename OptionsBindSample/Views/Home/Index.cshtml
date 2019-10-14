@@ -21,7 +21,10 @@
 @*直接注入到页面*@
 @using Microsoft.Extensions.Options
 @*@inject IOptions<OptionsBindSample.Student> ClassAccessor*@
-@inject IOptions<List<OptionsBindSample.Student>> ClassAccessor
+@*@inject IOptions<List<OptionsBindSample.Student>> ClassAccessor*@
+
+@*热更新,更改配置文件后不用重启，刷新即可看到效果*@
+@inject IOptionsSnapshot<List<OptionsBindSample.Student>> ClassAccessor
 
 <h1>Index</h1>
 
