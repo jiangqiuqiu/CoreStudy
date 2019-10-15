@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonConfigSample", "JsonCon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptionsBindSample", "OptionsBindSample\OptionsBindSample.csproj", "{E49F4958-BC6C-44C8-AF51-E1306E25CCDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDI", "CoreDI\CoreDI.csproj", "{16FF5A0C-36C1-4298-B2FE-D29DC4A1E0D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDI", "CoreDI\CoreDI.csproj", "{16FF5A0C-36C1-4298-B2FE-D29DC4A1E0D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPipeLine", "MyPipeLine\MyPipeLine.csproj", "{B991FA6E-B367-46C9-948A-9842C98EF2BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPipeLine", "MyPipeLine\MyPipeLine.csproj", "{B991FA6E-B367-46C9-948A-9842C98EF2BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloCore", "HelloCore\HelloCore.csproj", "{5A713FF9-64B6-4A26-A64A-A212CFAE4969}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloCore", "HelloCore\HelloCore.csproj", "{5A713FF9-64B6-4A26-A64A-A212CFAE4969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcCookieAuthSample", "MvcCookieAuthSample\MvcCookieAuthSample.csproj", "{6FA9032A-D2BB-42D8-867D-F1A1CF325BEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{5A713FF9-64B6-4A26-A64A-A212CFAE4969}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A713FF9-64B6-4A26-A64A-A212CFAE4969}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A713FF9-64B6-4A26-A64A-A212CFAE4969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FA9032A-D2BB-42D8-867D-F1A1CF325BEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FA9032A-D2BB-42D8-867D-F1A1CF325BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FA9032A-D2BB-42D8-867D-F1A1CF325BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FA9032A-D2BB-42D8-867D-F1A1CF325BEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
