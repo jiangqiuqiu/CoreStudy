@@ -15,9 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPipeLine", "MyPipeLine\My
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloCore", "HelloCore\HelloCore.csproj", "{5A713FF9-64B6-4A26-A64A-A212CFAE4969}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcCookieAuthSample", "MvcCookieAuthSample\MvcCookieAuthSample.csproj", "{6FA9032A-D2BB-42D8-867D-F1A1CF325BEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcCookieAuthSample", "MvcCookieAuthSample\MvcCookieAuthSample.csproj", "{6FA9032A-D2BB-42D8-867D-F1A1CF325BEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWTAuthSample", "JWTAuthSample\JWTAuthSample.csproj", "{189A4ADA-A0DF-42B7-B4CF-B3CE849A1865}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWTAuthSample", "JWTAuthSample\JWTAuthSample.csproj", "{189A4ADA-A0DF-42B7-B4CF-B3CE849A1865}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWT.Server", "JWT.Server\JWT.Server.csproj", "{F3937BCB-3025-490D-8789-EBBE0F4F57EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWT.API", "JWT.API\JWT.API.csproj", "{B48A5B21-BDE0-4EA9-AE0D-3A0709FD94B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{189A4ADA-A0DF-42B7-B4CF-B3CE849A1865}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{189A4ADA-A0DF-42B7-B4CF-B3CE849A1865}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{189A4ADA-A0DF-42B7-B4CF-B3CE849A1865}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3937BCB-3025-490D-8789-EBBE0F4F57EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3937BCB-3025-490D-8789-EBBE0F4F57EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3937BCB-3025-490D-8789-EBBE0F4F57EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3937BCB-3025-490D-8789-EBBE0F4F57EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B48A5B21-BDE0-4EA9-AE0D-3A0709FD94B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B48A5B21-BDE0-4EA9-AE0D-3A0709FD94B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B48A5B21-BDE0-4EA9-AE0D-3A0709FD94B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B48A5B21-BDE0-4EA9-AE0D-3A0709FD94B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
