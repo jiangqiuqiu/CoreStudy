@@ -102,13 +102,40 @@ namespace JWTAuthSample
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme= JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(o=> {
+
+                //默认是从Header中的Authorization中获取验证信息
                 o.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                 {
-                    ValidIssuer=jwtSettings.Issuer,
-                    ValidAudience=jwtSettings.Audience,
-                    IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey))
+                    ValidIssuer = jwtSettings.Issuer,
+                    ValidAudience = jwtSettings.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey))
                 };
+
+                //改为自定义认证
+                //由于实现JWT的框架在Headers默认的KEY是Authorization，而且VALUE必须是bearer + 空格 + 默认加密串。
+                //如果你习惯的KEY是用Token，VALUE是自定义的加密串。
+                //说白了就是把Authorization换成Token，VALUE的bearer和空格去掉，自由定义加密串.
+                //var token = context.Request.Headers["mytoken"]; 这里从Header中获取的就是你自己加密好的令牌信息
+                //o.SecurityTokenValidators.Clear();//先清除
+                //o.SecurityTokenValidators.Add(new MyTokenValidator());
+
+                //o.Events = new JwtBearerEvents()
+                //{
+                //    OnMessageReceived = context =>
+                //    {
+                //        var token = context.Request.Headers["mytoken"];
+                //        context.Token = token.FirstOrDefault();
+                //        return Task.CompletedTask;
+                //    }
+                //};
             });
+
+            //给予policy的授权
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("SuperAdminOnly",policy=>policy.RequireClaim("SuperAdminOnly"));
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

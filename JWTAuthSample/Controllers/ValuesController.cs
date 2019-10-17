@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace JWTAuthSample.Controllers
 {
-    [Authorize]
+    //[Authorize(Roles ="user")]//基于角色的授权role-based
+    //[Authorize]
+    [Authorize(Policy = "SuperAdminOnly")]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
