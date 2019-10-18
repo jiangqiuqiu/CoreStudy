@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcCookieAuthSample", "MvcC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWTAuthSample", "JWTAuthSample\JWTAuthSample.csproj", "{189A4ADA-A0DF-42B7-B4CF-B3CE849A1865}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWT.Server", "JWT.Server\JWT.Server.csproj", "{F3937BCB-3025-490D-8789-EBBE0F4F57EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWT.Server", "JWT.Server\JWT.Server.csproj", "{F3937BCB-3025-490D-8789-EBBE0F4F57EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWT.API", "JWT.API\JWT.API.csproj", "{B48A5B21-BDE0-4EA9-AE0D-3A0709FD94B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWT.API", "JWT.API\JWT.API.csproj", "{B48A5B21-BDE0-4EA9-AE0D-3A0709FD94B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentitySample", "IdentitySample\IdentitySample.csproj", "{D77D2B49-D3EE-4E57-AF54-5CB495EA1524}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{B48A5B21-BDE0-4EA9-AE0D-3A0709FD94B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B48A5B21-BDE0-4EA9-AE0D-3A0709FD94B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B48A5B21-BDE0-4EA9-AE0D-3A0709FD94B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D77D2B49-D3EE-4E57-AF54-5CB495EA1524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77D2B49-D3EE-4E57-AF54-5CB495EA1524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77D2B49-D3EE-4E57-AF54-5CB495EA1524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77D2B49-D3EE-4E57-AF54-5CB495EA1524}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

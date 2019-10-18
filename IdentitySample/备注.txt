@@ -1,0 +1,2 @@
+﻿在该解决方案目录下cmd 可以执行这条创建已经建立好了的MVC网站，包括EF和身份认证
+dotnet new mvc -au Individual -uld --name IdentitySample
