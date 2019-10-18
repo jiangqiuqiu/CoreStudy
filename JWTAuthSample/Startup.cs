@@ -98,6 +98,11 @@ namespace JWTAuthSample
             var jwtSettings = new JwtSettings();
             Configuration.Bind("JwtSettings",jwtSettings);//绑定到JwtSettings的实例上去
 
+            /*****************************
+             * 身份验证有好几种，Cookies JwtBearer Facebook Google MicrosoftAccount 
+             * OAuth OpenIdConnect Twitter
+             ******************************/
+
             services.AddAuthentication(options=>{
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme= JwtBearerDefaults.AuthenticationScheme;
