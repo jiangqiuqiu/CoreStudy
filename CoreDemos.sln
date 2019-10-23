@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWT.API", "JWT.API\JWT.API.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentitySample", "IdentitySample\IdentitySample.csproj", "{D77D2B49-D3EE-4E57-AF54-5CB495EA1524}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerCenter", "IdentityServerCenter\IdentityServerCenter.csproj", "{39056CAC-C5B5-40B6-9094-23ECA8AB072C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{D77D2B49-D3EE-4E57-AF54-5CB495EA1524}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D77D2B49-D3EE-4E57-AF54-5CB495EA1524}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D77D2B49-D3EE-4E57-AF54-5CB495EA1524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39056CAC-C5B5-40B6-9094-23ECA8AB072C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39056CAC-C5B5-40B6-9094-23ECA8AB072C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39056CAC-C5B5-40B6-9094-23ECA8AB072C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39056CAC-C5B5-40B6-9094-23ECA8AB072C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
