@@ -12,7 +12,7 @@ namespace IdentityServerCenter
         {
             return new List<ApiResource> 
             { 
-                new ApiResource("api","My Api")
+                new ApiResource("api1","My Api")
             };
         }
 
@@ -23,9 +23,9 @@ namespace IdentityServerCenter
                 new Client()
                 {
                     ClientId="clientid",
-                    AllowedGrantTypes=GrantTypes.ClientCredentials,
+                    AllowedGrantTypes=GrantTypes.ClientCredentials,//采用客户端凭证模式
                     ClientSecrets=new List<Secret>{ new Secret("secret".Sha256()) },
-                    AllowedScopes={ "api"}//这里的名称是GetApiResources里面定义的API名称
+                    AllowedScopes={ "api1"}//这里的名称是GetApiResources里面定义的API名称
                 }
             };
         }

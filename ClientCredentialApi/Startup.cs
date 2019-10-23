@@ -9,9 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using IdentityServer4;
 
-namespace IdentityServerCenter
+namespace ClientCredentialApi
 {
     public class Startup
     {
@@ -25,14 +24,13 @@ namespace IdentityServerCenter
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //添加Startup配置
-            services.AddIdentityServer()//把IdentityServer注册到容器                                       
-                .AddDeveloperSigningCredential() //对于Token签名需要一对公钥和私钥,
-                                                 //IdentityServer为开发者提供了一个AddDeveloperSigningCredential()方法，
-                                                 //它会帮我们搞定这个事情并且存储到硬盘。
-                //基于内存的方式
-                .AddInMemoryApiResources(Config.GetApiResources())//配置API资源
-                .AddInMemoryClients(Config.GetClients());////预置允许验证的Client
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication(options => {
+                    options.Authority = "http://localhost:5000";//配置Identityserver的授权地址
+                    options.RequireHttpsMetadata = false;//不需要https    
+                    options.ApiName = "api1";            //需要和IdentityServerCenter里Config里的名称相同
+                });
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -44,8 +42,8 @@ namespace IdentityServerCenter
             {
                 app.UseDeveloperExceptionPage();
             }
-            //添加Startup配置
-            app.UseIdentityServer();
+            app.UseAuthentication();// 添加认证中间件 
+            app.UseMvc();
         }
     }
 }
