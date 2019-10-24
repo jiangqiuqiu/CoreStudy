@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerCenter", "Ide
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientCredentialApi", "ClientCredentialApi\ClientCredentialApi.csproj", "{A29F5041-A0EC-47DE-8620-DD53F9EA68E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThirdPartyDemo", "ThirdPartyDemo\ThirdPartyDemo.csproj", "{419E9277-10CB-4C4C-9B91-729D5FB7BEB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{A29F5041-A0EC-47DE-8620-DD53F9EA68E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A29F5041-A0EC-47DE-8620-DD53F9EA68E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A29F5041-A0EC-47DE-8620-DD53F9EA68E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{419E9277-10CB-4C4C-9B91-729D5FB7BEB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{419E9277-10CB-4C4C-9B91-729D5FB7BEB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{419E9277-10CB-4C4C-9B91-729D5FB7BEB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{419E9277-10CB-4C4C-9B91-729D5FB7BEB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
