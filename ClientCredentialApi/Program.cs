@@ -12,6 +12,7 @@ namespace ClientCredentialApi
 {
     /****************************
      * 客户端凭证模式的授权模式ClientCredential
+     * 客户端集成IdentityServer
      * 
      * 只需要引用 IdentityServer4.AccessTokenValidation
      * 

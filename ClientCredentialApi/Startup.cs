@@ -24,10 +24,10 @@ namespace ClientCredentialApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication("Bearer")
+            services.AddAuthentication("Bearer")//添加授权模式
                 .AddIdentityServerAuthentication(options => {
-                    options.Authority = "http://localhost:5000";//配置Identityserver的授权地址
-                    options.RequireHttpsMetadata = false;//不需要https    
+                    options.Authority = "http://localhost:5000";//授权服务器地址
+                    options.RequireHttpsMetadata = false;//是否是https   
                     options.ApiName = "api1";            //需要和IdentityServerCenter里Config里的名称相同
                 });
 
@@ -42,7 +42,7 @@ namespace ClientCredentialApi
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseAuthentication();// 添加认证中间件 
+            app.UseAuthentication();//使用授权中间件
             app.UseMvc();
         }
     }

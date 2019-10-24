@@ -6,6 +6,7 @@ using IdentityServer4.Models;
 
 namespace IdentityServerCenter
 {
+    //用来初始化IdentityServer
     public class Config
     {
         public static IEnumerable<ApiResource> GetApiResources()

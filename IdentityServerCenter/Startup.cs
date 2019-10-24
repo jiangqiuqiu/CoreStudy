@@ -27,12 +27,14 @@ namespace IdentityServerCenter
         {
             //添加Startup配置
             services.AddIdentityServer()//把IdentityServer注册到容器                                       
-                .AddDeveloperSigningCredential() //对于Token签名需要一对公钥和私钥,
+                .AddDeveloperSigningCredential() //添加开发人员签名凭据
+                                                 //扩展在每次启动时，为令牌签名创建了一个临时密钥。在生成环境需要一个持久化的密钥
+                                                 //对于Token签名需要一对公钥和私钥,
                                                  //IdentityServer为开发者提供了一个AddDeveloperSigningCredential()方法，
                                                  //它会帮我们搞定这个事情并且存储到硬盘。
-                //基于内存的方式
-                .AddInMemoryApiResources(Config.GetApiResources())//配置API资源
-                .AddInMemoryClients(Config.GetClients());////预置允许验证的Client
+                                                 //基于内存的方式
+                .AddInMemoryApiResources(Config.GetApiResources())//添加内存apiresource,配置API资源
+                .AddInMemoryClients(Config.GetClients());//添加内存client,预置允许验证的Client
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
