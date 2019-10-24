@@ -25,11 +25,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWT.API", "JWT.API\JWT.API.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentitySample", "IdentitySample\IdentitySample.csproj", "{D77D2B49-D3EE-4E57-AF54-5CB495EA1524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerCenter", "IdentityServerCenter\IdentityServerCenter.csproj", "{39056CAC-C5B5-40B6-9094-23ECA8AB072C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerCenter", "IdentityServerCenter\IdentityServerCenter.csproj", "{39056CAC-C5B5-40B6-9094-23ECA8AB072C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientCredentialApi", "ClientCredentialApi\ClientCredentialApi.csproj", "{A29F5041-A0EC-47DE-8620-DD53F9EA68E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientCredentialApi", "ClientCredentialApi\ClientCredentialApi.csproj", "{A29F5041-A0EC-47DE-8620-DD53F9EA68E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThirdPartyDemo", "ThirdPartyDemo\ThirdPartyDemo.csproj", "{419E9277-10CB-4C4C-9B91-729D5FB7BEB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThirdPartyDemo", "ThirdPartyDemo\ThirdPartyDemo.csproj", "{419E9277-10CB-4C4C-9B91-729D5FB7BEB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerPasswordCenter", "IdentityServerPasswordCenter\IdentityServerPasswordCenter.csproj", "{76CCA7CE-D8D6-4EAA-B95B-57E1C9EB0B58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdClient", "PwdClient\PwdClient.csproj", "{9A910C12-8D1F-4EEF-AD24-48334E8CF1E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdThirdPartyDemo", "PwdThirdPartyDemo\PwdThirdPartyDemo.csproj", "{F8512BA2-288B-4844-AA61-A0F2248AE0F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +99,18 @@ Global
 		{419E9277-10CB-4C4C-9B91-729D5FB7BEB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{419E9277-10CB-4C4C-9B91-729D5FB7BEB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{419E9277-10CB-4C4C-9B91-729D5FB7BEB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76CCA7CE-D8D6-4EAA-B95B-57E1C9EB0B58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76CCA7CE-D8D6-4EAA-B95B-57E1C9EB0B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76CCA7CE-D8D6-4EAA-B95B-57E1C9EB0B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76CCA7CE-D8D6-4EAA-B95B-57E1C9EB0B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A910C12-8D1F-4EEF-AD24-48334E8CF1E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A910C12-8D1F-4EEF-AD24-48334E8CF1E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A910C12-8D1F-4EEF-AD24-48334E8CF1E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A910C12-8D1F-4EEF-AD24-48334E8CF1E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8512BA2-288B-4844-AA61-A0F2248AE0F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8512BA2-288B-4844-AA61-A0F2248AE0F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8512BA2-288B-4844-AA61-A0F2248AE0F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8512BA2-288B-4844-AA61-A0F2248AE0F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
