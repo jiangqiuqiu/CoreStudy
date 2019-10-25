@@ -45,14 +45,20 @@ namespace OIDCServer
                 new Client()
                 {
                     ClientId="mvc",
+                    ClientName="Mvc Client",
+                    ClientUri="http://localhost:5001",
+                    LogoUri="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1572022302487&di=9ce3478fd00f90b3bd4128e466770654&imgtype=0&src=http%3A%2F%2Fcdn.auth0.com%2Fblog%2Fasp-net-core-tutorial%2Flogo.png",
+                    Description="Mvc Client Description",
+                    AllowRememberConsent=true,
                     AllowedGrantTypes=GrantTypes.Implicit,//采用隐式模式
-                    RequireConsent=false,//是否需要用户点击确认进行跳转,非常信任的用户可以不需要（比如自己）
+                    RequireConsent=true,//是否需要用户点击确认进行跳转,非常信任的用户可以不需要（比如自己）
                     RedirectUris={"http://localhost:5001/signin-oidc" },//跳转登录到的客户端的地址： 客户端服务器地址+/signin-oidc 这个是规定的
                     PostLogoutRedirectUris={"http://localhost:5001/signout-callback-oidc"},//跳转登出到的客户端的地址  也是规定好的
                     ClientSecrets=new List<Secret>{ new Secret("secret".Sha256()) },                    
                     AllowedScopes={ //可以访问的Resource
                         IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.OpenId
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Email
                     }
                 }
             };

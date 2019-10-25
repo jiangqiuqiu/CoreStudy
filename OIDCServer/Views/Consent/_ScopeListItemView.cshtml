@@ -2,5 +2,22 @@
 @model ScopeViewModel
 
 <li>
-    
+    <label>
+        <input type="checkbox"
+               name="ScopeConsented"
+               id="scopes_@Model.Name"
+               checked="@Model.Checked"
+               disabled="@Model.Required"/>
+        <strong>@Model.Name</strong>
+        @if (Model.Emphasize)
+        {
+            <span class="oi oi-person"></span>
+        }
+    </label>
+    @if (string.IsNullOrEmpty(Model.Description))
+    {
+        <div>
+            <label for="scopes_@Model.Name">@Model.Description</label>
+        </div>
+    }
 </li>

@@ -9,7 +9,7 @@
 <!--显示客户端信息-->
 <div class="row">
     <div class="col-sm-10">
-        @if (string.IsNullOrWhiteSpace(Model.ClientLogoUrl))
+        @if (!string.IsNullOrWhiteSpace(Model.ClientLogoUrl))
         {
             <div><img src="@Model.ClientLogoUrl" /></div>
         }
@@ -41,7 +41,7 @@
             {
                 <div class="card">
                     <div class="card-header">
-                        <span class=""></span>
+                        <span class="oi oi-laptop"></span>
                         应用权限
                     </div>
                 </div>
@@ -53,5 +53,17 @@
                 </ul>
             }
         </form>
+    </div>
+
+    <div>
+        <button>同意</button>
+        <button>取消</button>
+        @if (!string.IsNullOrEmpty(Model.ClientUrl))
+        {
+            <a>
+                <span class="oi oi-info"></span>
+                <strong>@Model.ClientUrl</strong>
+            </a>
+        }
     </div>
 </div>
