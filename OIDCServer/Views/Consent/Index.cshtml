@@ -28,10 +28,14 @@
             <div class="col-sm-8">
                 <input type="hidden" asp-for="ReturnUrl" />
 
-                <div class="alert alert-danger">
-                    <strong>Error</strong>
-                    <div asp-validation-summary="All" class="alert-danger"></div>
-                </div>
+                @if (!ViewContext.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        <strong>Error</strong>
+                        <div asp-validation-summary="All" class="alert-danger"></div>
+                    </div>
+                }
+
 
                 @if (Model.IdentityScopes.Any())
                 {

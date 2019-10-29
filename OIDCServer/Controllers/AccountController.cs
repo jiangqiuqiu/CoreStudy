@@ -13,25 +13,32 @@ using OIDCServer.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using IdentityServer4.Test;
 using Microsoft.AspNetCore.Http;
+using IdentityServer4.Services;
 
 namespace OIDCServer.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly TestUserStore _users;
-        public AccountController(TestUserStore users)
-        {
-            this._users = users;
-        }
-
-        //private UserManager<ApplicationUser> _userManager;
-        //private SignInManager<ApplicationUser> _signInManager;
-
-        //public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        //TestUser的登录方式
+        //private readonly TestUserStore _users;
+        //public AccountController(TestUserStore users)
         //{
-        //    _userManager = userManager;
-        //    _signInManager = signInManager;
+        //    this._users = users;
         //}
+
+        //IndentityUser的登录方式
+        private UserManager<ApplicationUser> _userManager;
+        private SignInManager<ApplicationUser> _signInManager;
+        private IIdentityServerInteractionService _identityServerInteractionService;
+
+        public AccountController(UserManager<ApplicationUser> userManager,
+                                 SignInManager<ApplicationUser> signInManager,
+                                 IIdentityServerInteractionService identityServerInteractionService)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _identityServerInteractionService = identityServerInteractionService;
+        }
 
         private IActionResult RedirectToLoacl(string returnUrl)
         {
@@ -61,30 +68,29 @@ namespace OIDCServer.Controllers
         }
 
         [HttpPost]
-        //public async Task<IActionResult> Register(RegisterViewModel registerViewModel, string returnUrl  = null)
-        public IActionResult Register(RegisterViewModel registerViewModel, string returnUrl = null)
+        public async Task<IActionResult> Register(RegisterViewModel registerViewModel, string returnUrl = null)        
         {
-            //if (ModelState.IsValid)
-            //{
-            //    ViewData["ReturnUrl"] = returnUrl;
-            //    var identityUser = new ApplicationUser
-            //    {
-            //        Email = registerViewModel.Email,
-            //        UserName = registerViewModel.Email,
-            //        NormalizedUserName = registerViewModel.Email,
-            //    };
+            if (ModelState.IsValid)
+            {
+                ViewData["ReturnUrl"] = returnUrl;
+                var identityUser = new ApplicationUser
+                {
+                    Email = registerViewModel.Email,
+                    UserName = registerViewModel.Email,
+                    NormalizedUserName = registerViewModel.Email,
+                };
 
-            //    var identityResult = await _userManager.CreateAsync(identityUser, registerViewModel.Password);
-            //    if (identityResult.Succeeded)
-            //    {
-            //        await _signInManager.SignInAsync(identityUser, new AuthenticationProperties { IsPersistent = true });
-            //        return RedirectToLoacl(returnUrl);
-            //    }
-            //    else
-            //    {
-            //        AddErrors(identityResult);
-            //    }
-            //}
+                var identityResult = await _userManager.CreateAsync(identityUser, registerViewModel.Password);
+                if (identityResult.Succeeded)
+                {
+                    await _signInManager.SignInAsync(identityUser, new AuthenticationProperties { IsPersistent = true });
+                    return RedirectToLoacl(returnUrl);
+                }
+                else
+                {
+                    AddErrors(identityResult);
+                }
+            }
 
             return View();
         }
@@ -101,36 +107,60 @@ namespace OIDCServer.Controllers
             if (ModelState.IsValid)
             {
                 ViewData["ReturnUrl"] = returnUrl;
-                var user = _users.FindByUsername(loginViewModel.UserName);
+                var user =await _userManager.FindByEmailAsync(loginViewModel.Email);
                 if (user == null)
                 {
-                    ModelState.AddModelError(nameof(loginViewModel.UserName), "User not exists");
+                    ModelState.AddModelError(nameof(loginViewModel.Email), "Email not exists");
                 }
                 else
                 {
-                    if(_users.ValidateCredentials(loginViewModel.UserName,loginViewModel.Password))
+                    //if(_userManager.ValidateCredentials(loginViewModel.UserName,loginViewModel.Password))
+                    //{
+                    //    //是否记住
+                    //    var props = new AuthenticationProperties
+                    //    {
+                    //        IsPersistent = true,//获取或设置一个值，该值指示身份验证是否是持久性的。
+                    //        ExpiresUtc =DateTimeOffset.UtcNow.Add(TimeSpan.FromMinutes(30))//获取或设置身份验证的到期日期和时间。
+                    //    };
+
+                    //    //该SignInAsync在Identity4下，Microsoft.AspNetCore.Http.AuthenticationManagerExtensions
+                    //    //是HttpContext的扩展方法
+                    //    await HttpContext.SignInAsync(
+                    //       user.SubjectId,
+                    //       user.Username,
+                    //       props);
+
+                    //    return RedirectToLoacl(returnUrl);
+                    //}
+                    //ModelState.AddModelError(nameof(loginViewModel.UserName), "Wrong Passoword");
+
+                    if (await _userManager.CheckPasswordAsync(user,loginViewModel.Password))
                     {
                         //是否记住
-                        var props = new AuthenticationProperties
+                        AuthenticationProperties props = null;
+                        if (loginViewModel.RemeberMe)
                         {
-                            IsPersistent = true,//获取或设置一个值，该值指示身份验证是否是持久性的。
-                            ExpiresUtc =DateTimeOffset.UtcNow.Add(TimeSpan.FromMinutes(30))//获取或设置身份验证的到期日期和时间。
-                        };
+                            props = new AuthenticationProperties
+                            {
+                                IsPersistent = true,//获取或设置一个值，该值指示身份验证是否是持久性的。
+                                ExpiresUtc = DateTimeOffset.UtcNow.Add(TimeSpan.FromMinutes(30))//获取或设置身份验证的到期日期和时间。
+                            };
+                        }
+                        
 
-                        //该SignInAsync在Identity4下，Microsoft.AspNetCore.Http.AuthenticationManagerExtensions
-                        //是HttpContext的扩展方法
-                        await HttpContext.SignInAsync(
-                           user.SubjectId,
-                           user.Username,
-                           props);
+                        await _signInManager.SignInAsync(user,props);
 
-                        return RedirectToLoacl(returnUrl);
+                        if (_identityServerInteractionService.IsValidReturnUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        return Redirect("~/");
                     }
-                    ModelState.AddModelError(nameof(loginViewModel.UserName), "Wrong Passoword");
+                    ModelState.AddModelError(nameof(loginViewModel.Email), "Wrong Passoword");
                 }
             }
 
-            return View();
+            return View(loginViewModel);
         }
 
         public IActionResult MakeLogin()
@@ -150,8 +180,8 @@ namespace OIDCServer.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            //await _signInManager.SignOutAsync();
-            await HttpContext.SignOutAsync();//先用这个来替代
+            await _signInManager.SignOutAsync();
+            //await HttpContext.SignOutAsync();//先用这个来替代
             return RedirectToAction("Index", "Home");
         }
 

@@ -29,12 +29,27 @@ namespace OIDCServer
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            /**************************
+             * 集成EF Core
+             * 
+             * 不用TestUser了
+             * 要引用Nuget包  IdentityServer4.AspNetIdentity
+             * ***********************/
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
+            services.AddIdentity<ApplicationUser, ApplicationUserRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddIdentityServer()
                     .AddDeveloperSigningCredential()//添加开发人员签名凭据
                     .AddInMemoryApiResources(Config.GetApiResources())//添加内存apiresource
                     .AddInMemoryClients(Config.GetClients())//添加内存client
                     .AddInMemoryIdentityResources(Config.GetIdentityResources())//添加系统中的资源
-                    .AddTestUsers(Config.GetTestUsers());//添加测试用户
+                    .AddAspNetIdentity<ApplicationUser>();
+                    //.AddTestUsers(Config.GetTestUsers());//添加测试用户
 
             #region 注释掉原来的Identity
             //services.AddDbContext<ApplicationDbContext>(options =>
