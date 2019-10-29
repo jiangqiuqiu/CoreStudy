@@ -6,64 +6,87 @@
 
 <h1>ConsentPage</h1>
 
-<!--显示客户端信息-->
-<div class="row">
-    <div class="col-sm-10">
-        @if (!string.IsNullOrWhiteSpace(Model.ClientLogoUrl))
-        {
-            <div><img src="@Model.ClientLogoUrl" /></div>
-        }
-
-        <h1>
-            @Model.ClientName
-            <small>希望使用你的账户</small>
-        </h1>
-
-    </div>
-</div>
-
-<!--显示Scope信息-->
-<div class="row">
-    <div class="col-sm-8">
-        <form asp-action="Index" method="post">
-            @if (Model.IdentityScopes.Any())
+    <!--显示客户端信息-->
+    <div class="row">
+        <div class="col-sm-10">
+            @if (!string.IsNullOrWhiteSpace(Model.ClientLogoUrl))
             {
-                <ul class="list-group">
-
-                    @foreach (var scope in Model.IdentityScopes)
-                    {
-                         @await Html.PartialAsync("_ScopeListItemView", scope)
-                    }
-                </ul>
+                <div><img src="@Model.ClientLogoUrl" /></div>
             }
 
-            @if (Model.ResourceScopes.Any())
-            {
-                <div class="card">
-                    <div class="card-header">
-                        <span class="oi oi-laptop"></span>
-                        应用权限
-                    </div>
+            <h1>
+                @Model.ClientName
+                <small>希望使用你的账户</small>
+            </h1>
+
+        </div>
+    </div>
+
+    <!--显示Scope信息-->
+    <form asp-action="Index" asp-controller="Consent" method="post">
+        <div class="row">
+            <div class="col-sm-8">
+                <input type="hidden" asp-for="ReturnUrl" />
+
+                <div class="alert alert-danger">
+                    <strong>Error</strong>
+                    <div asp-validation-summary="All" class="alert-danger"></div>
                 </div>
-                <ul class="list-group">
-                    @foreach (var scope in Model.ResourceScopes)
-                    {
-                        @await Html.PartialAsync("_ScopeListItemView", scope)
-                    }
-                </ul>
-            }
-        </form>
-    </div>
 
-    <div>
-        <button>同意</button>
-        <button>取消</button>
-        @if (!string.IsNullOrEmpty(Model.ClientUrl))
-        {
-            <a>
-                <span class="oi oi-info"></span>
-                <strong>@Model.ClientUrl</strong>
-            </a>
-        }
-    </div>
-</div>
+                @if (Model.IdentityScopes.Any())
+                {
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="oi oi-info"></span>
+                            用户信息
+                        </div>
+                    </div>
+
+                    <ul class="list-group">
+
+                        @foreach (var scope in Model.IdentityScopes)
+                        {
+                            @await Html.PartialAsync("_ScopeListItemView", scope)
+                        }
+                    </ul>
+                }
+
+                @if (Model.ResourceScopes.Any())
+                {
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="oi oi-laptop"></span>
+                            应用权限
+                        </div>
+                    </div>
+                    <ul class="list-group">
+                        @foreach (var scope in Model.ResourceScopes)
+                        {
+                            @await Html.PartialAsync("_ScopeListItemView", scope)
+                        }
+                    </ul>
+                }
+                <label>
+                    <input type="checkbox" asp-for="RememberConsent" />
+                    <strong>记住我的选择</strong>
+                </label>
+            </div>
+
+          
+
+
+            <div>
+                <button name="button" value="yes" class="btn btn-primary" autofocus type="submit">同意</button>
+                <button name="button" class="btn btn-dark" value="no" type="submit">取消</button>
+                @if (!string.IsNullOrEmpty(Model.ClientUrl))
+                {
+                    <a href="@Model.ClientUrl" class="fi-align-right btn btn-info">
+                        <span class="oi oi-info"></span>
+                        <strong>@Model.ClientUrl</strong>
+                    </a>
+                }
+
+            </div>
+        </div>
+    </form>
+   

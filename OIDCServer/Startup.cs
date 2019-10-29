@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OIDCServer.Data;
 using OIDCServer.Models;
+using OIDCServer.Services;
 
 namespace OIDCServer
 {
@@ -59,7 +60,7 @@ namespace OIDCServer
             //});
             #endregion
 
-
+            services.AddScoped<ConsentService>();
             services.AddMvc();
         }
 
