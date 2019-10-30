@@ -1,19 +1,39 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Authentication;
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <dl>
-        @foreach (var claim in User.Claims)
-        {
-            <dt>
-              "Type:"  @claim.Type
-            </dt>
-            <dt>
-              "Value:"  @claim.Value
-            </dt>
-        }
-    </dl>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <h2>Claims</h2>
+        <dl>
+            @foreach (var claim in User.Claims)
+            {
+                <dt>
+                    "Type:"  @claim.Type
+                </dt>
+                <dt>
+                    "Value:"  @claim.Value
+                </dt>
+            }
+            <dt>Access Token</dt>
+            <dd>@await ViewContext.HttpContext.GetTokenAsync("access_token")</dd>
+
+            <dt>refresh Token</dt>
+            <dd>@await ViewContext.HttpContext.GetTokenAsync("refresh_token")</dd>
+
+            <dt>Id Token</dt>
+            <dd>@await ViewContext.HttpContext.GetTokenAsync("id_token")</dd>
+        </dl>
+
+
+        <h2>Properties</h2>
+        <dl>
+            @foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
+            {
+                <dt>@prop.Key</dt>
+                <dd>@prop.Value</dd>
+            }
+        </dl>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>

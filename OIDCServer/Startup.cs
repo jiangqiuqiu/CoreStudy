@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -48,9 +49,17 @@ namespace OIDCServer
                     .AddInMemoryApiResources(Config.GetApiResources())//添加内存apiresource
                     .AddInMemoryClients(Config.GetClients())//添加内存client
                     .AddInMemoryIdentityResources(Config.GetIdentityResources())//添加系统中的资源
-                    .AddAspNetIdentity<ApplicationUser>();
-                    //.AddTestUsers(Config.GetTestUsers());//添加测试用户
+                    .AddAspNetIdentity<ApplicationUser>()
+                    .Services.AddScoped<IProfileService,ProfileService>();//注册ProfileService
+                                                                          //.AddTestUsers(Config.GetTestUsers());//添加测试用户
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+            });
             #region 注释掉原来的Identity
             //services.AddDbContext<ApplicationDbContext>(options =>
             //{
